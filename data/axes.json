@@ -1,0 +1,6 @@
+[
+  {"id":"PI","left":"P","right":"I","leftName":"Plan","rightName":"Improvise","descLeft":"段取り・見積りを先に置く","descRight":"試しながら状況に合わせる"},
+  {"id":"QD","left":"Q","right":"D","leftName":"Quick","rightName":"Deliberate","descLeft":"まず決めて進める","descRight":"比較して納得して決める"},
+  {"id":"AC","left":"A","right":"C","leftName":"Autonomous","rightName":"Collaborative","descLeft":"まず自分で完結","descRight":"早めに相談・合意"},
+  {"id":"GL","left":"G","right":"L","leftName":"Global","rightName":"Local","descLeft":"目的・構造に強い","descRight":"手順・詰めに強い"}
+]

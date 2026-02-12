@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>結果 | 行動スタイル16タイプ診断</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <main class="container" id="app"></main>
+
+  <script type="module">
+    import { loadJson, loadState, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '/assets/app.js';
+
+    const state = loadState();
+    if (!state) location.href = '/';
+
+    const [axes, questions, types] = await Promise.all([
+      loadJson('/data/axes.json'),
+      loadJson(state.mode === 100 ? '/data/questions_100.json' : '/data/questions_20.json'),
+      loadJson('/data/types.json')
+    ]);
+
+    const score = scoreQuestions(questions, state.answers, axes);
+
+    // tie-break 方式A: 同点軸の2問を重み2倍
+    Object.entries(state.tieAnswers || {}).forEach(([id, value]) => {
+      const m = id.match(/_TB_(..)_\d$/);
+      if (!m) return;
+      const axisId = m[1];
+      const sc = scoreMap[value];
+      if (!sc || !score[axisId]) return;
+      score[axisId].L += sc.L * 2;
+      score[axisId].R += sc.R * 2;
+      score[axisId].n += 2;
+    });
+
+    const metrics = axes.map((a) => computeAxisMetric(a, score[a.id]));
+    const summary = summarize(metrics);
+    const code = metrics.map((m) => m.raw >= 0 ? m.left : m.right).join('');
+    const type = types.find((t) => t.code === code);
+    const app = document.getElementById('app');
+
+    const shareUrl = `${location.origin}/t/${code}/`;
+
+    app.innerHTML = `
+      <section class="card">
+        <h1>診断結果</h1>
+        <p class="muted">再診断はいつでも可能です。</p>
+        <div class="footer-actions"><a class="btn secondary" href="/">再診断する</a></div>
+      </section>
+
+      <section class="card" style="margin-top:14px">
+        <h2>表示名</h2>
+        <p><strong>${state.displayName}</strong> さん</p>
+      </section>
+
+      <section class="card hero" style="margin-top:14px">
+        <p class="muted">あなたの傾向タイプ</p>
+        <div class="code">${code}</div>
+        <h2>${type?.name || 'タイプ不明'}</h2>
+        <p>${type?.catch || ''}</p>
+      </section>
+
+      <section class="card" style="margin-top:14px">
+        <h2>4軸バランス</h2>
+        ${metrics.map((m) => `
+          <div class="bar-wrap">
+            <div class="axis-head"><span>${m.left} ↔ ${m.right}</span><span>${m.leftPct.toFixed(1)}% 左寄り</span></div>
+            <div class="axis-bar"><div class="mid"></div><div class="fill" style="width:${m.leftPct}%"></div></div>
+          </div>`).join('')}
+      </section>
+
+      <section class="card" style="margin-top:14px">
+        <h2>信頼度: ${summary.level}</h2>
+        <p>overall_conf: ${(summary.overall).toFixed(2)}</p>
+        <p class="muted">${summary.reason}</p>
+      </section>
+
+      <section class="card" style="margin-top:14px">
+        <h2>タイプ解説</h2>
+        <div class="grid2">
+          <div><h3>強み</h3><ul>${(type?.strength || []).map((x)=>`<li>${x}</li>`).join('')}</ul></div>
+          <div><h3>落とし穴</h3><ul>${(type?.pitfall || []).map((x)=>`<li>${x}</li>`).join('')}</ul></div>
+        </div>
+        <h3 style="margin-top:10px">明日の一手</h3>
+        <p>${type?.nextAction || ''}</p>
+        <div class="tags" style="margin-top:8px">${(type?.environment || []).map((x)=>`<span>${x}</span>`).join('')}</div>
+      </section>
+
+      <section class="card" style="margin-top:14px">
+        <h2>共有</h2>
+        <p>タイプページ URL: <a href="${shareUrl}">${shareUrl}</a></p>
+        <div class="footer-actions">
+          <button class="btn" id="copy">URLをコピー</button>
+          <button class="btn secondary" id="detail">結果の短い説明</button>
+          <a class="btn secondary" href="/t/${code}/">タイプ詳細ページへ</a>
+        </div>
+      </section>
+    `;
+
+    document.getElementById('copy').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(shareUrl);
+      alert('コピーしました');
+    });
+
+    document.getElementById('detail').addEventListener('click', () => {
+      alert('この診断は行動傾向の可視化が目的です。結果は絶対的な分類ではなく、状況に応じて変化し得ます。');
+    });
+  </script>
+</body>
+</html>

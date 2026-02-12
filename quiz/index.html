@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>設問 | 行動スタイル16タイプ診断</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>診断設問</h1>
+      <p id="meta" class="muted"></p>
+      <div class="progress"><div id="pbar"></div></div>
+      <small id="ptext"></small>
+    </section>
+
+    <section class="card" style="margin-top:14px">
+      <h2 id="qid"></h2>
+      <p id="qtext"></p>
+      <div class="options" id="options"></div>
+      <div class="footer-actions">
+        <button class="btn secondary" id="prev">戻る</button>
+        <button class="btn" id="next">次へ</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { loadJson, loadState, saveState, scoreQuestions, computeAxisMetric, summarize, scaleLabels } from '/assets/app.js';
+
+    const state = loadState();
+    if (!state) location.href = '/';
+
+    const [axes, q20, q100] = await Promise.all([
+      loadJson('/data/axes.json'),
+      loadJson('/data/questions_20.json'),
+      loadJson('/data/questions_100.json')
+    ]);
+
+    const questions = state.mode === 100 ? q100 : q20;
+    const tiePools = Object.fromEntries(axes.map((a) => [a.id, q100.filter((q) => q.axis === a.id).slice(0, 2)]));
+    const tieOrder = state.tieOrder || [];
+    let current = Number(state.currentIndex || 0);
+    let tieMode = Boolean(state.tieMode);
+    let tieIndex = Number(state.tieIndex || 0);
+
+    const meta = document.getElementById('meta');
+    const qid = document.getElementById('qid');
+    const qtext = document.getElementById('qtext');
+    const options = document.getElementById('options');
+    const pbar = document.getElementById('pbar');
+    const ptext = document.getElementById('ptext');
+
+    function getQuestion() {
+      if (!tieMode) return questions[current];
+      const axisId = tieOrder[tieIndex];
+      const axisQ = tiePools[axisId][state.tieStep || 0];
+      return { ...axisQ, id: `${axisQ.id}_TB_${axisId}_${state.tieStep || 0}`, tieAxis: axisId };
+    }
+
+    function selectedValue(id) {
+      if (id.includes('_TB_')) return state.tieAnswers[id] || '';
+      return state.answers[id] || '';
+    }
+
+    function render() {
+      const question = getQuestion();
+      if (!question) return;
+      const total = tieMode ? tieOrder.length * 2 : questions.length;
+      const done = tieMode ? tieIndex * 2 + (state.tieStep || 0) : current;
+      const ratio = ((done + 1) / total) * 100;
+      meta.textContent = `${state.displayName} さん / ${state.mode}問モード` + (tieMode ? '（同点解消設問）' : '');
+      qid.textContent = tieMode ? `Tie-break: ${question.tieAxis}` : `設問 ${current + 1}`;
+      qtext.textContent = `${question.leftLabel}  ↔  ${question.rightLabel}`;
+      pbar.style.width = `${ratio}%`;
+      ptext.textContent = `${done + 1} / ${total}`;
+
+      const sel = Number(selectedValue(question.id));
+      options.innerHTML = scaleLabels.map((label, i) => {
+        const v = i + 1;
+        return `<label class="option"><input type="radio" name="ans" value="${v}" ${sel === v ? 'checked' : ''}/> ${v}. ${label}</label>`;
+      }).join('');
+    }
+
+    function persistAnswer() {
+      const question = getQuestion();
+      const chosen = document.querySelector('input[name="ans"]:checked');
+      if (!chosen) return false;
+      const v = Number(chosen.value);
+      if (question.id.includes('_TB_')) state.tieAnswers[question.id] = v;
+      else state.answers[question.id] = v;
+      saveState(state);
+      return true;
+    }
+
+    function finishMainAndMaybeTie() {
+      const score = scoreQuestions(questions, state.answers, axes);
+      const metrics = axes.map((a) => computeAxisMetric(a, score[a.id]));
+      const summary = summarize(metrics);
+      if (summary.unresolved.length) {
+        state.tieMode = true;
+        state.tieOrder = summary.unresolved;
+        state.tieIndex = 0;
+        state.tieStep = 0;
+        tieMode = true;
+        tieIndex = 0;
+        saveState(state);
+        render();
+        return;
+      }
+      location.href = '/result/';
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (!persistAnswer()) return alert('回答を選択してください。');
+
+      if (!tieMode) {
+        if (current < questions.length - 1) {
+          current += 1;
+          state.currentIndex = current;
+          saveState(state);
+          render();
+        } else {
+          finishMainAndMaybeTie();
+        }
+        return;
+      }
+
+      // tie-break
+      if ((state.tieStep || 0) === 0) {
+        state.tieStep = 1;
+      } else {
+        state.tieStep = 0;
+        state.tieIndex = (state.tieIndex || 0) + 1;
+      }
+      tieIndex = state.tieIndex || 0;
+      saveState(state);
+
+      if (tieIndex >= tieOrder.length) location.href = '/result/';
+      else render();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (!tieMode && current > 0) {
+        current -= 1;
+        state.currentIndex = current;
+        saveState(state);
+        render();
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
