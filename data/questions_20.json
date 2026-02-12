@@ -1,0 +1,122 @@
+[
+  {
+    "id": "S01",
+    "axis": "PI",
+    "leftLabel": "締切から逆算して予定を置く",
+    "rightLabel": "直近の状況を見て当日決める"
+  },
+  {
+    "id": "S02",
+    "axis": "PI",
+    "leftLabel": "先に「やらないこと」も決める",
+    "rightLabel": "やりながら取捨選択する"
+  },
+  {
+    "id": "S03",
+    "axis": "PI",
+    "leftLabel": "不確実でも仮スケジュールを作る",
+    "rightLabel": "情報が揃ってから決める"
+  },
+  {
+    "id": "S04",
+    "axis": "PI",
+    "leftLabel": "チェックリストがあると安心",
+    "rightLabel": "その場で必要なことを思い出して対応"
+  },
+  {
+    "id": "S05",
+    "axis": "PI",
+    "leftLabel": "準備で失敗確率を下げたい",
+    "rightLabel": "失敗しても速く巻き返したい"
+  },
+  {
+    "id": "S06",
+    "axis": "QD",
+    "leftLabel": "まず決めて必要なら修正する",
+    "rightLabel": "比較して納得してから決める"
+  },
+  {
+    "id": "S07",
+    "axis": "QD",
+    "leftLabel": "情報が6割でも前に進める",
+    "rightLabel": "重要なら8〜9割まで集めたい"
+  },
+  {
+    "id": "S08",
+    "axis": "QD",
+    "leftLabel": "迷ったら小さく試して決める",
+    "rightLabel": "迷ったら整理してから決める"
+  },
+  {
+    "id": "S09",
+    "axis": "QD",
+    "leftLabel": "決断が遅い方がストレス",
+    "rightLabel": "決断が雑な方がストレス"
+  },
+  {
+    "id": "S10",
+    "axis": "QD",
+    "leftLabel": "判断はテンポ重視",
+    "rightLabel": "判断は根拠重視"
+  },
+  {
+    "id": "S11",
+    "axis": "AC",
+    "leftLabel": "まず自分で形にして見せたい",
+    "rightLabel": "早めに相談しながら作りたい"
+  },
+  {
+    "id": "S12",
+    "axis": "AC",
+    "leftLabel": "役割が曖昧でも拾って進める",
+    "rightLabel": "役割が決まると進めやすい"
+  },
+  {
+    "id": "S13",
+    "axis": "AC",
+    "leftLabel": "一人で集中すると進む",
+    "rightLabel": "進捗共有があると進む"
+  },
+  {
+    "id": "S14",
+    "axis": "AC",
+    "leftLabel": "途中経過は完成に寄せて見せる",
+    "rightLabel": "途中経過でも早めに見せる"
+  },
+  {
+    "id": "S15",
+    "axis": "AC",
+    "leftLabel": "連絡は必要最低限でよい",
+    "rightLabel": "連絡はこまめが安心"
+  },
+  {
+    "id": "S16",
+    "axis": "GL",
+    "leftLabel": "まず目的と全体像を押さえる",
+    "rightLabel": "まず具体手順から考える"
+  },
+  {
+    "id": "S17",
+    "axis": "GL",
+    "leftLabel": "優先順位（捨てる/選ぶ）を考える",
+    "rightLabel": "手戻りしない段取りを考える"
+  },
+  {
+    "id": "S18",
+    "axis": "GL",
+    "leftLabel": "論点を構造化したい",
+    "rightLabel": "具体例や数字を揃えたい"
+  },
+  {
+    "id": "S19",
+    "axis": "GL",
+    "leftLabel": "「なぜやるか」の説明が重要",
+    "rightLabel": "「どうやるか」の説明が重要"
+  },
+  {
+    "id": "S20",
+    "axis": "GL",
+    "leftLabel": "方針が決まれば細部は任せたい",
+    "rightLabel": "重要箇所は自分で確認したい"
+  }
+]

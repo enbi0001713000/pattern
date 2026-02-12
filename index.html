@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>行動スタイル16タイプ診断</title>
+  <meta name="description" content="4軸×2側で16タイプを可視化する行動スタイル診断" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card hero">
+      <h1>行動スタイル16タイプ診断</h1>
+      <p class="muted">4軸（P/I, Q/D, A/C, G/L）を連続値で可視化し、4文字コードで傾向を表示します。</p>
+      <p class="notice">この診断はタイプを断定するものではなく、行動傾向を把握するための参考情報です。</p>
+    </section>
+
+    <section class="card" style="margin-top:14px">
+      <h2>診断を開始</h2>
+      <form id="start-form" class="grid2">
+        <div class="field">
+          <label for="displayName">表示名</label>
+          <input id="displayName" name="displayName" placeholder="例：はる" maxlength="24" required />
+        </div>
+        <div class="field">
+          <label for="mode">モード</label>
+          <select id="mode" name="mode">
+            <option value="20">簡易（20問）</option>
+            <option value="100">精密（100問）</option>
+          </select>
+        </div>
+        <div>
+          <button class="btn" type="submit">診断をはじめる</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module">
+    import { clearState, saveState } from '/assets/app.js';
+
+    clearState();
+    const form = document.getElementById('start-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const displayName = data.get('displayName').toString().trim();
+      const mode = Number(data.get('mode'));
+      saveState({
+        displayName,
+        mode,
+        answers: {},
+        tieAnswers: {},
+        createdAt: new Date().toISOString()
+      });
+      location.href = '/quiz/';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "PI01",
+    "axis": "PI",
+    "leftLabel": "逆算で動く",
+    "rightLabel": "今できる一手から動く"
+  },
+  {
+    "id": "PI02",
+    "axis": "PI",
+    "leftLabel": "作業前に手順を書く",
+    "rightLabel": "走りながら手順を整える"
+  },
+  {
+    "id": "PI03",
+    "axis": "PI",
+    "leftLabel": "先にリスクを列挙して潰す",
+    "rightLabel": "起きたリスクに素早く対処する"
+  },
+  {
+    "id": "PI04",
+    "axis": "PI",
+    "leftLabel": "事前に必要物を揃える",
+    "rightLabel": "必要になったら都度調達する"
+  },
+  {
+    "id": "PI05",
+    "axis": "PI",
+    "leftLabel": "予定変更は最小化したい",
+    "rightLabel": "予定変更は自然に起こる前提で考える"
+  },
+  {
+    "id": "PI06",
+    "axis": "PI",
+    "leftLabel": "先に優先順位を固定する",
+    "rightLabel": "状況で優先順位を入れ替える"
+  },
+  {
+    "id": "PI07",
+    "axis": "PI",
+    "leftLabel": "細かく分けてから開始",
+    "rightLabel": "まず開始してから分ける"
+  },
+  {
+    "id": "PI08",
+    "axis": "PI",
+    "leftLabel": "手戻りを避ける確認を挟む",
+    "rightLabel": "手戻りしても速く巻き返す"
+  },
+  {
+    "id": "PI09",
+    "axis": "PI",
+    "leftLabel": "ゴール条件（Done）を先に言語化",
+    "rightLabel": "進めながらゴール条件を固める"
+  },
+  {
+    "id": "PI10",
+    "axis": "PI",
+    "leftLabel": "先に時間配分を決める",
+    "rightLabel": "その場で時間配分を変える"
+  },
+  {
+    "id": "PI11",
+    "axis": "PI",
+    "leftLabel": "計画があると集中できる",
+    "rightLabel": "自由度があると集中できる"
+  },
+  {
+    "id": "PI12",
+    "axis": "PI",
+    "leftLabel": "先に全体見積りを置く",
+    "rightLabel": "進み具合で見積りを更新する"
+  },
+  {
+    "id": "PI13",
+    "axis": "PI",
+    "leftLabel": "守れる範囲で約束する",
+    "rightLabel": "背伸びして約束を取る"
+  },
+  {
+    "id": "PI14",
+    "axis": "PI",
+    "leftLabel": "バッファを入れる",
+    "rightLabel": "バッファは後で作る"
+  },
+  {
+    "id": "PI15",
+    "axis": "PI",
+    "leftLabel": "変更は手順に反映",
+    "rightLabel": "変更は状況判断で吸収"
+  },
+  {
+    "id": "PI16",
+    "axis": "PI",
+    "leftLabel": "必要情報を先に集める",
+    "rightLabel": "動きつつ集める"
+  },
+  {
+    "id": "PI17",
+    "axis": "PI",
+    "leftLabel": "ルーティン化で強い",
+    "rightLabel": "都度最適化で強い"
+  },
+  {
+    "id": "PI18",
+    "axis": "PI",
+    "leftLabel": "事前共有で認識合わせ",
+    "rightLabel": "成果物で認識合わせ"
+  },
+  {
+    "id": "PI19",
+    "axis": "PI",
+    "leftLabel": "計画→着手",
+    "rightLabel": "試す→計画"
+  },
+  {
+    "id": "PI20",
+    "axis": "PI",
+    "leftLabel": "予定外があれば調整して戻す",
+    "rightLabel": "予定外を取り込んで組み替える"
+  },
+  {
+    "id": "PI21",
+    "axis": "PI",
+    "leftLabel": "仕組みで継続",
+    "rightLabel": "気分で継続"
+  },
+  {
+    "id": "PI22",
+    "axis": "PI",
+    "leftLabel": "翌日の一手を前日に決める",
+    "rightLabel": "当日に決める"
+  },
+  {
+    "id": "PI23",
+    "axis": "PI",
+    "leftLabel": "一度決めた方針は崩しにくい",
+    "rightLabel": "良い案が出れば変える"
+  },
+  {
+    "id": "PI24",
+    "axis": "PI",
+    "leftLabel": "準備に時間をかけてもよい",
+    "rightLabel": "準備は最小で早く動きたい"
+  },
+  {
+    "id": "PI25",
+    "axis": "PI",
+    "leftLabel": "安定して進む方が好み",
+    "rightLabel": "変化しながら進む方が好み"
+  },
+  {
+    "id": "QD01",
+    "axis": "QD",
+    "leftLabel": "まず絞る",
+    "rightLabel": "比較してから絞る"
+  },
+  {
+    "id": "QD02",
+    "axis": "QD",
+    "leftLabel": "確度6割で前進",
+    "rightLabel": "納得できる確度まで詰める"
+  },
+  {
+    "id": "QD03",
+    "axis": "QD",
+    "leftLabel": "小さく試して決める",
+    "rightLabel": "整理して決める"
+  },
+  {
+    "id": "QD04",
+    "axis": "QD",
+    "leftLabel": "速度が成果に直結",
+    "rightLabel": "質が成果に直結"
+  },
+  {
+    "id": "QD05",
+    "axis": "QD",
+    "leftLabel": "直感は使える",
+    "rightLabel": "直感は検証してから"
+  },
+  {
+    "id": "QD06",
+    "axis": "QD",
+    "leftLabel": "決断を後回しにしない",
+    "rightLabel": "決断には時間を確保したい"
+  },
+  {
+    "id": "QD07",
+    "axis": "QD",
+    "leftLabel": "走りながら調整できる",
+    "rightLabel": "固めてから走りたい"
+  },
+  {
+    "id": "QD08",
+    "axis": "QD",
+    "leftLabel": "まず暫定で置く",
+    "rightLabel": "最初から筋の良い案を作る"
+  },
+  {
+    "id": "QD09",
+    "axis": "QD",
+    "leftLabel": "誤差は許容して進む",
+    "rightLabel": "誤差の原因を把握して進む"
+  },
+  {
+    "id": "QD10",
+    "axis": "QD",
+    "leftLabel": "テンポ重視",
+    "rightLabel": "検討プロセス重視"
+  },
+  {
+    "id": "QD11",
+    "axis": "QD",
+    "leftLabel": "失敗は早めに出す方が良い",
+    "rightLabel": "失敗は予防したい"
+  },
+  {
+    "id": "QD12",
+    "axis": "QD",
+    "leftLabel": "材料が足りなければ作りに行く",
+    "rightLabel": "揃うまで待つ"
+  },
+  {
+    "id": "QD13",
+    "axis": "QD",
+    "leftLabel": "決断が先だと安心",
+    "rightLabel": "準備が揃うと安心"
+  },
+  {
+    "id": "QD14",
+    "axis": "QD",
+    "leftLabel": "勝てそうなら行く",
+    "rightLabel": "負けない道筋なら行く"
+  },
+  {
+    "id": "QD15",
+    "axis": "QD",
+    "leftLabel": "早く決めて展開",
+    "rightLabel": "すり合わせて展開"
+  },
+  {
+    "id": "QD16",
+    "axis": "QD",
+    "leftLabel": "検討会より実行会",
+    "rightLabel": "実行会より検討会"
+  },
+  {
+    "id": "QD17",
+    "axis": "QD",
+    "leftLabel": "期限があると決めやすい",
+    "rightLabel": "情報があると決めやすい"
+  },
+  {
+    "id": "QD18",
+    "axis": "QD",
+    "leftLabel": "会議は短く結論",
+    "rightLabel": "会議は丁寧に論点潰し"
+  },
+  {
+    "id": "QD19",
+    "axis": "QD",
+    "leftLabel": "今の最善で切る",
+    "rightLabel": "将来の後悔が少ないで切る"
+  },
+  {
+    "id": "QD20",
+    "axis": "QD",
+    "leftLabel": "修正は前提",
+    "rightLabel": "修正は例外"
+  },
+  {
+    "id": "QD21",
+    "axis": "QD",
+    "leftLabel": "迷い始めたら一旦決める",
+    "rightLabel": "一旦集める"
+  },
+  {
+    "id": "QD22",
+    "axis": "QD",
+    "leftLabel": "スピードで差をつけたい",
+    "rightLabel": "精度で差をつけたい"
+  },
+  {
+    "id": "QD23",
+    "axis": "QD",
+    "leftLabel": "意思決定は少人数が良い",
+    "rightLabel": "関係者を入れたい"
+  },
+  {
+    "id": "QD24",
+    "axis": "QD",
+    "leftLabel": "理由は後から言語化しやすい",
+    "rightLabel": "先に言語化したい"
+  },
+  {
+    "id": "QD25",
+    "axis": "QD",
+    "leftLabel": "まず進むが得意",
+    "rightLabel": "まず整えるが得意"
+  },
+  {
+    "id": "AC01",
+    "axis": "AC",
+    "leftLabel": "まず自分で形にする",
+    "rightLabel": "相談しながら作る"
+  },
+  {
+    "id": "AC02",
+    "axis": "AC",
+    "leftLabel": "一人の方が集中",
+    "rightLabel": "進捗共有があると集中"
+  },
+  {
+    "id": "AC03",
+    "axis": "AC",
+    "leftLabel": "判断は自分で持ちたい",
+    "rightLabel": "判断は分担したい"
+  },
+  {
+    "id": "AC04",
+    "axis": "AC",
+    "leftLabel": "完成に寄せて見せる",
+    "rightLabel": "途中でも早めに見せる"
+  },
+  {
+    "id": "AC05",
+    "axis": "AC",
+    "leftLabel": "自分のやり方で進めたい",
+    "rightLabel": "みんなに合わせたい"
+  },
+  {
+    "id": "AC06",
+    "axis": "AC",
+    "leftLabel": "課題は自分で抱えがち",
+    "rightLabel": "周囲に投げがち"
+  },
+  {
+    "id": "AC07",
+    "axis": "AC",
+    "leftLabel": "役割が曖昧でも拾う",
+    "rightLabel": "役割が決まると進む"
+  },
+  {
+    "id": "AC08",
+    "axis": "AC",
+    "leftLabel": "相談は最小限",
+    "rightLabel": "相談は多い方が安心"
+  },
+  {
+    "id": "AC09",
+    "axis": "AC",
+    "leftLabel": "責任範囲が明確だと燃える",
+    "rightLabel": "連携が密だと燃える"
+  },
+  {
+    "id": "AC10",
+    "axis": "AC",
+    "leftLabel": "最後まで自分で見たい",
+    "rightLabel": "引き継いでもよい"
+  },
+  {
+    "id": "AC11",
+    "axis": "AC",
+    "leftLabel": "自分の完成を優先",
+    "rightLabel": "チームの完成を優先"
+  },
+  {
+    "id": "AC12",
+    "axis": "AC",
+    "leftLabel": "自分で調べて解く",
+    "rightLabel": "適任に相談して解く"
+  },
+  {
+    "id": "AC13",
+    "axis": "AC",
+    "leftLabel": "引き受けたら一気に片付ける",
+    "rightLabel": "分担して進める"
+  },
+  {
+    "id": "AC14",
+    "axis": "AC",
+    "leftLabel": "連絡は必要最低限",
+    "rightLabel": "こまめが安心"
+  },
+  {
+    "id": "AC15",
+    "axis": "AC",
+    "leftLabel": "自分のペースを崩したくない",
+    "rightLabel": "相手のペースに合わせたい"
+  },
+  {
+    "id": "AC16",
+    "axis": "AC",
+    "leftLabel": "自分の仮説で動く",
+    "rightLabel": "合意してから動く"
+  },
+  {
+    "id": "AC17",
+    "axis": "AC",
+    "leftLabel": "結論が出てから依頼",
+    "rightLabel": "途中でも依頼"
+  },
+  {
+    "id": "AC18",
+    "axis": "AC",
+    "leftLabel": "目標は自分で作る",
+    "rightLabel": "一緒に作る"
+  },
+  {
+    "id": "AC19",
+    "axis": "AC",
+    "leftLabel": "複数人だと遅く感じる",
+    "rightLabel": "一人だと不安なことがある"
+  },
+  {
+    "id": "AC20",
+    "axis": "AC",
+    "leftLabel": "自分でやる方が早い",
+    "rightLabel": "役割分担が早い"
+  },
+  {
+    "id": "AC21",
+    "axis": "AC",
+    "leftLabel": "自分の基準で完成度を上げる",
+    "rightLabel": "レビューで上げる"
+  },
+  {
+    "id": "AC22",
+    "axis": "AC",
+    "leftLabel": "要点だけで十分",
+    "rightLabel": "背景まで共有したい"
+  },
+  {
+    "id": "AC23",
+    "axis": "AC",
+    "leftLabel": "自分で進行をコントロール",
+    "rightLabel": "みんなでコントロール"
+  },
+  {
+    "id": "AC24",
+    "axis": "AC",
+    "leftLabel": "相談より実装を優先",
+    "rightLabel": "実装より相談を優先"
+  },
+  {
+    "id": "AC25",
+    "axis": "AC",
+    "leftLabel": "単独プレーが得意",
+    "rightLabel": "チームプレーが得意"
+  },
+  {
+    "id": "GL01",
+    "axis": "GL",
+    "leftLabel": "目的と全体像から",
+    "rightLabel": "具体手順から"
+  },
+  {
+    "id": "GL02",
+    "axis": "GL",
+    "leftLabel": "優先順位（捨てる/選ぶ）から",
+    "rightLabel": "手戻りを減らす段取りから"
+  },
+  {
+    "id": "GL03",
+    "axis": "GL",
+    "leftLabel": "論点を構造化したい",
+    "rightLabel": "具体例や数字を揃えたい"
+  },
+  {
+    "id": "GL04",
+    "axis": "GL",
+    "leftLabel": "施策の狙いを説明したい",
+    "rightLabel": "作業のやり方を説明したい"
+  },
+  {
+    "id": "GL05",
+    "axis": "GL",
+    "leftLabel": "抽象→具体が得意",
+    "rightLabel": "具体→抽象が得意"
+  },
+  {
+    "id": "GL06",
+    "axis": "GL",
+    "leftLabel": "全体の整合性が気になる",
+    "rightLabel": "部分の完成度が気になる"
+  },
+  {
+    "id": "GL07",
+    "axis": "GL",
+    "leftLabel": "方針が決まれば任せたい",
+    "rightLabel": "重要箇所は自分で確認したい"
+  },
+  {
+    "id": "GL08",
+    "axis": "GL",
+    "leftLabel": "指標で見たい",
+    "rightLabel": "現象で見たい"
+  },
+  {
+    "id": "GL09",
+    "axis": "GL",
+    "leftLabel": "「なぜ」を詰めたい",
+    "rightLabel": "「どうやる」を詰めたい"
+  },
+  {
+    "id": "GL10",
+    "axis": "GL",
+    "leftLabel": "上流の設計が好き",
+    "rightLabel": "下流の調整が好き"
+  },
+  {
+    "id": "GL11",
+    "axis": "GL",
+    "leftLabel": "大枠の合意があると進む",
+    "rightLabel": "具体の合意があると進む"
+  },
+  {
+    "id": "GL12",
+    "axis": "GL",
+    "leftLabel": "要約から伝える",
+    "rightLabel": "具体から伝える"
+  },
+  {
+    "id": "GL13",
+    "axis": "GL",
+    "leftLabel": "原則と例外で整理",
+    "rightLabel": "ケースで整理"
+  },
+  {
+    "id": "GL14",
+    "axis": "GL",
+    "leftLabel": "ストーリーで理解",
+    "rightLabel": "ステップで理解"
+  },
+  {
+    "id": "GL15",
+    "axis": "GL",
+    "leftLabel": "施策同士の優先度を調整",
+    "rightLabel": "作業手順を改善"
+  },
+  {
+    "id": "GL16",
+    "axis": "GL",
+    "leftLabel": "何をやらないかを決めたい",
+    "rightLabel": "どうやってやり切るかを決めたい"
+  },
+  {
+    "id": "GL17",
+    "axis": "GL",
+    "leftLabel": "未来の拡張性が気になる",
+    "rightLabel": "目の前の安定性が気になる"
+  },
+  {
+    "id": "GL18",
+    "axis": "GL",
+    "leftLabel": "上位概念から仮説を置く",
+    "rightLabel": "観察から仮説を置く"
+  },
+  {
+    "id": "GL19",
+    "axis": "GL",
+    "leftLabel": "結果の定義を先に決める",
+    "rightLabel": "手段の定義を先に決める"
+  },
+  {
+    "id": "GL20",
+    "axis": "GL",
+    "leftLabel": "俯瞰して詰まりを見つける",
+    "rightLabel": "現場で詰まりを見つける"
+  },
+  {
+    "id": "GL21",
+    "axis": "GL",
+    "leftLabel": "意味のある簡略化",
+    "rightLabel": "必要な精密化"
+  },
+  {
+    "id": "GL22",
+    "axis": "GL",
+    "leftLabel": "変数を減らす",
+    "rightLabel": "変数を洗い出す"
+  },
+  {
+    "id": "GL23",
+    "axis": "GL",
+    "leftLabel": "抽象化してから説明",
+    "rightLabel": "具体化してから説明"
+  },
+  {
+    "id": "GL24",
+    "axis": "GL",
+    "leftLabel": "曖昧さを許容して進む",
+    "rightLabel": "曖昧さを減らして進む"
+  },
+  {
+    "id": "GL25",
+    "axis": "GL",
+    "leftLabel": "方向性に安心",
+    "rightLabel": "手順に安心"
+  }
+]
