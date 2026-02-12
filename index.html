@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>行動スタイル16タイプ診断</title>
   <meta name="description" content="4軸×2側で16タイプを可視化する行動スタイル診断" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
   <main class="container">
@@ -37,7 +37,7 @@
   </main>
 
   <script type="module">
-    import { clearState, saveState } from '/assets/app.js';
+    import { clearState, saveState } from './assets/app.js';
 
     clearState();
     const form = document.getElementById('start-form');
@@ -53,7 +53,7 @@
         tieAnswers: {},
         createdAt: new Date().toISOString()
       });
-      location.href = '/quiz/';
+      location.href = './quiz/';
     });
   </script>
 </body>
