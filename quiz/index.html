@@ -27,9 +27,9 @@
   </main>
 
   <script type="module">
-    import { loadJson, loadState, saveState, scoreQuestions, computeAxisMetric, summarize, scaleLabels } from '../assets/app.js';
+    import { loadJson, loadState, saveState, loadCurrent, saveCurrent, scoreQuestions, computeAxisMetric, summarize, scaleLabels } from '../assets/app.js';
 
-    const state = loadState();
+    const state = loadCurrent() || loadState();
     if (!state) location.href = '../';
 
     const [axes, q20, q100] = await Promise.all([
@@ -91,6 +91,7 @@
       if (question.id.includes('_TB_')) state.tieAnswers[question.id] = v;
       else state.answers[question.id] = v;
       saveState(state);
+      saveCurrent(state);
       return true;
     }
 
@@ -106,6 +107,7 @@
         tieMode = true;
         tieIndex = 0;
         saveState(state);
+        saveCurrent(state);
         render();
         return;
       }
@@ -120,6 +122,7 @@
           current += 1;
           state.currentIndex = current;
           saveState(state);
+          saveCurrent(state);
           render();
         } else {
           finishMainAndMaybeTie();
@@ -136,6 +139,7 @@
       }
       tieIndex = state.tieIndex || 0;
       saveState(state);
+      saveCurrent(state);
 
       if (tieIndex >= tieOrder.length) location.href = '../result/';
       else render();
@@ -146,6 +150,7 @@
         current -= 1;
         state.currentIndex = current;
         saveState(state);
+        saveCurrent(state);
         render();
       }
     });

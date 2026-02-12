@@ -17,6 +17,10 @@
 
     <section class="card" style="margin-top:14px">
       <h2>診断を開始</h2>
+      <div id="resume" style="display:none; margin-bottom:12px">
+        <p class="muted" id="resume-meta"></p>
+        <button class="btn secondary" id="resume-btn" type="button">前回の続きから再開</button>
+      </div>
       <form id="start-form" class="grid2">
         <div class="field">
           <label for="displayName">表示名</label>
@@ -37,22 +41,37 @@
   </main>
 
   <script type="module">
-    import { clearState, saveState } from './assets/app.js';
+    import { saveCurrent, saveState, loadCurrent } from './assets/app.js';
 
-    clearState();
+    const current = loadCurrent();
+    const resume = document.getElementById('resume');
+    const resumeMeta = document.getElementById('resume-meta');
+    if (current) {
+      const answered = Object.keys(current.answers || {}).length + Object.keys(current.tieAnswers || {}).length;
+      resume.style.display = 'block';
+      resumeMeta.textContent = `${current.displayName} さん / ${current.mode}問モード / 回答済み ${answered}件`;
+    }
+
     const form = document.getElementById('start-form');
+    document.getElementById('resume-btn')?.addEventListener('click', () => {
+      location.href = './quiz/';
+    });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
       const displayName = data.get('displayName').toString().trim();
       const mode = Number(data.get('mode'));
-      saveState({
+      const state = {
         displayName,
         mode,
         answers: {},
         tieAnswers: {},
+        currentIndex: 0,
         createdAt: new Date().toISOString()
-      });
+      };
+      saveState(state);
+      saveCurrent(state);
       location.href = './quiz/';
     });
   </script>
