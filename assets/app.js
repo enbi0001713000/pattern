@@ -94,6 +94,14 @@ export function computeAxisMetric(axisDef, score) {
   };
 }
 
+
+export function strengthLabel(strength) {
+  if (strength < 0.2) return '拮抗';
+  if (strength < 0.4) return 'やや寄り';
+  if (strength < 0.7) return '寄り';
+  return '強く寄り';
+}
+
 export function summarize(metrics) {
   const unresolved = metrics.filter((m) => m.raw === 0).map((m) => m.id);
   const axisConf = metrics.map((m) => 0.7 * m.strength + 0.3 * m.answeredRatio);
