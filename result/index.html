@@ -10,10 +10,11 @@
   <main class="container" id="app"></main>
 
   <script type="module">
-    import { loadJson, loadState, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '../assets/app.js';
+    import { loadJson, loadState, loadCurrent, clearCurrent, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '../assets/app.js';
 
-    const state = loadState();
+    const state = loadCurrent() || loadState();
     if (!state) location.href = '../';
+    clearCurrent();
 
     const [axes, questions, types] = await Promise.all([
       loadJson('../data/axes.json'),

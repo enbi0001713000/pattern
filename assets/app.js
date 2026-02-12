@@ -1,4 +1,5 @@
 const APP_KEY = 'behavior-style-v1';
+const CURRENT_KEY = 'as16.current';
 
 export const scaleLabels = [
   '左側（A側）にとても近い',
@@ -26,13 +27,31 @@ export function saveState(state) {
   localStorage.setItem(APP_KEY, JSON.stringify(state));
 }
 
+export function saveCurrent(current) {
+  localStorage.setItem(CURRENT_KEY, JSON.stringify(current));
+}
+
 export function loadState() {
   const raw = localStorage.getItem(APP_KEY);
   return raw ? JSON.parse(raw) : null;
 }
 
+export function loadCurrent() {
+  const raw = localStorage.getItem(CURRENT_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
 export function clearState() {
   localStorage.removeItem(APP_KEY);
+}
+
+export function clearCurrent() {
+  localStorage.removeItem(CURRENT_KEY);
 }
 
 export function initAxisScores(axes) {
