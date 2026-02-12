@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>結果 | 行動スタイル16タイプ診断</title>
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
   <main class="container" id="app"></main>
 
   <script type="module">
-    import { loadJson, loadState, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '/assets/app.js';
+    import { loadJson, loadState, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '../assets/app.js';
 
     const state = loadState();
-    if (!state) location.href = '/';
+    if (!state) location.href = '../';
 
     const [axes, questions, types] = await Promise.all([
-      loadJson('/data/axes.json'),
-      loadJson(state.mode === 100 ? '/data/questions_100.json' : '/data/questions_20.json'),
-      loadJson('/data/types.json')
+      loadJson('../data/axes.json'),
+      loadJson(state.mode === 100 ? '../data/questions_100.json' : '../data/questions_20.json'),
+      loadJson('../data/types.json')
     ]);
 
     const score = scoreQuestions(questions, state.answers, axes);
@@ -41,13 +41,13 @@
     const type = types.find((t) => t.code === code);
     const app = document.getElementById('app');
 
-    const shareUrl = `${location.origin}/t/${code}/`;
+    const shareUrl = new URL(`../t/${code}/`, location.href).href;
 
     app.innerHTML = `
       <section class="card">
         <h1>診断結果</h1>
         <p class="muted">再診断はいつでも可能です。</p>
-        <div class="footer-actions"><a class="btn secondary" href="/">再診断する</a></div>
+        <div class="footer-actions"><a class="btn secondary" href="../">再診断する</a></div>
       </section>
 
       <section class="card" style="margin-top:14px">
@@ -94,7 +94,7 @@
         <div class="footer-actions">
           <button class="btn" id="copy">URLをコピー</button>
           <button class="btn secondary" id="detail">結果の短い説明</button>
-          <a class="btn secondary" href="/t/${code}/">タイプ詳細ページへ</a>
+          <a class="btn secondary" href="../t/${code}/">タイプ詳細ページへ</a>
         </div>
       </section>
     `;
