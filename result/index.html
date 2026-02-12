@@ -36,10 +36,7 @@
       score[axisId].n += 2;
     });
 
-    const metrics = axes.map((a) => computeAxisMetric(a, score[a.id]));
-    const summary = summarize(metrics);
-    const code = metrics.map((m) => m.raw >= 0 ? m.left : m.right).join('');
-    const type = types.find((t) => t.code === code);
+@@ -43,55 +43,61 @@
     const app = document.getElementById('app');
 
     const shareUrl = new URL(`../t/${code}/`, location.href).href;
@@ -101,19 +98,3 @@
         <div class="footer-actions">
           <button class="btn" id="copy">URLをコピー</button>
           <button class="btn secondary" id="detail">結果の短い説明</button>
-          <a class="btn secondary" href="../t/${code}/">タイプ詳細ページへ</a>
-        </div>
-      </section>
-    `;
-
-    document.getElementById('copy').addEventListener('click', async () => {
-      await navigator.clipboard.writeText(shareUrl);
-      alert('コピーしました');
-    });
-
-    document.getElementById('detail').addEventListener('click', () => {
-      alert('この診断は行動傾向の可視化が目的です。結果は絶対的な分類ではなく、状況に応じて変化し得ます。');
-    });
-  </script>
-</body>
-</html>
