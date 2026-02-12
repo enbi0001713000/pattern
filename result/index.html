@@ -10,7 +10,7 @@
   <main class="container" id="app"></main>
 
   <script type="module">
-    import { loadJson, loadState, loadCurrent, clearCurrent, computeAxisMetric, scoreQuestions, summarize, scoreMap } from '../assets/app.js';
+    import { loadJson, loadState, loadCurrent, clearCurrent, computeAxisMetric, scoreQuestions, summarize, scoreMap, strengthLabel } from '../assets/app.js';
 
     const state = loadCurrent() || loadState();
     if (!state) location.href = '../';
@@ -65,11 +65,17 @@
 
       <section class="card" style="margin-top:14px">
         <h2>4軸バランス</h2>
-        ${metrics.map((m) => `
-          <div class="bar-wrap">
-            <div class="axis-head"><span>${m.left} ↔ ${m.right}</span><span>${m.leftPct.toFixed(1)}% 左寄り</span></div>
+        ${metrics.map((m) => {
+          const side = m.raw > 0 ? `${m.left}寄り` : m.raw < 0 ? `${m.right}寄り` : '左右拮抗';
+          const level = strengthLabel(m.strength);
+          const barSideClass = m.raw > 0 ? 'left' : m.raw < 0 ? 'right' : 'neutral';
+          return `
+          <div class="bar-wrap ${barSideClass}">
+            <div class="axis-head"><span>${m.left} ↔ ${m.right}</span><span class="axis-bias">${side} / ${level}</span></div>
             <div class="axis-bar"><div class="mid"></div><div class="fill" style="width:${m.leftPct}%"></div></div>
-          </div>`).join('')}
+            ${m.strength < 0.2 ? '<p class="muted" style="margin:6px 0 0">両方の要素を使い分ける傾向</p>' : ''}
+          </div>`;
+        }).join('')}
       </section>
 
       <section class="card" style="margin-top:14px">

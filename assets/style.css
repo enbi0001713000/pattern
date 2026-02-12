@@ -33,9 +33,16 @@ small,.muted{color:var(--muted)}
 .progress > div{height:100%;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
 .bar-wrap{margin:8px 0 14px}
 .axis-head{display:flex;justify-content:space-between;font-weight:700;font-size:.95rem;margin-bottom:5px}
+.axis-bias{font-weight:800}
 .axis-bar{height:14px;background:#e8ebf2;border-radius:999px;position:relative;overflow:hidden}
 .axis-bar .fill{height:100%;background:#6366f1}
 .axis-bar .mid{position:absolute;left:50%;top:0;bottom:0;width:2px;background:#fff;opacity:.9}
+.bar-wrap.left .axis-bar .fill{background:linear-gradient(90deg,#60a5fa,#2563eb)}
+.bar-wrap.right .axis-bar .fill{background:linear-gradient(90deg,#fda4af,#e11d48)}
+.bar-wrap.neutral .axis-bar .fill{background:linear-gradient(90deg,#9ca3af,#6b7280)}
+.bar-wrap.left .axis-bias{color:#1d4ed8}
+.bar-wrap.right .axis-bias{color:#be123c}
+.bar-wrap.neutral .axis-bias{color:#4b5563}
 .tags span{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--primary-soft);font-size:.85rem;margin-right:6px}
 .hero{background:linear-gradient(130deg,#312e81,#4f46e5);color:#fff}
 .hero .muted{color:#d9dbff}
